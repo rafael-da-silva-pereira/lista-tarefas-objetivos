@@ -124,3 +124,77 @@ input.addEventListener("keyup", function (event) {
         btnAdd.click();
     }
 });
+
+let timerInterval;
+let tempoTotal = 0;
+let tempoPausado = 0; // Variável para armazenar o tempo quando pausado
+let pausado = false; // Flag para controlar se o timer está pausado
+
+function ativarContagem() {
+    // Obter o tempo definido pelo usuário
+    let inputTempo = document.getElementById('quantidadeTempo').value;
+    let partesTempo = inputTempo.split(':');
+    let horas = parseInt(partesTempo[0]);
+    let minutos = parseInt(partesTempo[1]);
+
+    // Converter horas e minutos para segundos
+    tempoTotal = horas * 3600 + minutos * 60;
+
+    // Atualizar o contador a cada segundo
+    timerInterval = setInterval(atualizarTempo, 1000);
+
+    // Desativar input de tempo enquanto o timer está ativo
+    document.getElementById('quantidadeTempo').disabled = true;
+
+    document.getElementById('começou').textContent = 'Vamos nessa!'
+}
+
+// function pararContagem() {
+//     clearInterval(timerInterval);
+//     document.getElementById('começou').textContent = 'Parou a atividade!'
+// }
+
+function pararContagem() {
+    if (!pausado) {
+        // Se não estiver pausado, pausar o timer
+        clearInterval(timerInterval);
+        tempoPausado = tempoTotal;
+        pausado = true;
+        document.getElementById('stopButton').textContent = 'Resume';
+    } else {
+        // Se estiver pausado, retomar o timer
+        pausado = false;
+        document.getElementById('stopButton').textContent = 'Pause';
+        timerInterval = setInterval(atualizarTempo, 1000);
+    }
+}
+
+function limparTempo() {
+    clearInterval(timerInterval);
+    tempoTotal = 0;
+    document.getElementById('quantidadeTempo').disabled = false;
+    document.getElementById('quantidadeTempo').value = '';
+    document.getElementById('tempo').textContent = '00:00:00';
+    document.getElementById('começou').textContent = '';
+}
+
+function atualizarTempo() {
+    if (tempoTotal <= 0) {
+        clearInterval(timerInterval);
+        //alert('Tempo esgotado!');
+        document.getElementById('quantidadeTempo').disabled = false;
+    } else {
+        tempoTotal--;
+        let horas = Math.floor(tempoTotal / 3600);
+        let minutos = Math.floor((tempoTotal % 3600) / 60);
+        let segundos = tempoTotal % 60;
+
+        // Formatar para hh:mm:ss
+        let tempoFormatado =
+            (horas < 10 ? '0' : '') + horas + ':' +
+            (minutos < 10 ? '0' : '') + minutos + ':' +
+            (segundos < 10 ? '0' : '') + segundos;
+
+        document.getElementById('tempo').textContent = tempoFormatado;
+    }
+}

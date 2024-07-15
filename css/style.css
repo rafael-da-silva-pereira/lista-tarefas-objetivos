@@ -9,11 +9,6 @@ body {
     background-color: #eeeeee;
 }
 
-h1 {
-    text-align: center;
-    font-size: 3rem;
-}
-
 header {
     display: flex;
     flex-flow: row wrap;
@@ -22,7 +17,87 @@ header {
     align-items: center;
 }
 
-input {
+.controleDeTempo {
+    display: flexbox;
+    flex-direction: row;
+}
+
+.quantidadeTempo {
+    height: 120px;
+    font-size: 2rem;
+    width: 10%;
+    padding-left: 10%;
+}
+
+.controleDeTempo {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: black;
+    color: white;
+    height: 2%;
+    font-size: 2rem;
+    width: 90%;
+    padding: 2%;
+    border-radius: 10px;
+    border: solid 2px white;
+    margin: 0 5%;
+    text-align: center;
+}
+
+.h2Timer {
+    color: rgb(210, 161, 161);
+}
+
+#quantidadeTempo {
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    font-size: 80%;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-left: 25%;
+
+}
+
+#tempo {
+    font-size: 200%;
+}
+
+#startButton {
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+    font-size: 80%;
+    font-weight: bold;
+    border-radius: 5px;
+    background: green;
+    color: white;
+}
+
+#stopButton {
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+    font-size: 80%;
+    font-weight: bold;
+    border-radius: 5px;
+    background: yellow;
+    color: black;
+}
+
+#cleanTime {
+    width: 25%;
+    padding: 5px;
+    text-align: center;
+    font-size: 80%;
+    font-weight: bold;
+    border-radius: 5px;
+    background: red;
+    color: white;
+}
+
+#inputTarefa {
     height: 120px;
     font-size: 2rem;
     width: 80%;

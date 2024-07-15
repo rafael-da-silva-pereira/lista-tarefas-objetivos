@@ -12,8 +12,17 @@
 </head>
 
 <body>
-    <h1>Lista de Tarefas</h1>
-
+    <div class="controleDeTempo">
+        <h2 class="h2Timer">Timer tarefas</h2>
+        <input id="quantidadeTempo" type="time">
+        <h3 id="começou"></h3>
+        <h4 id="tempo">00:00:00</h4>
+        <div>
+            <button id="startButton" onclick="ativarContagem()">Start</button>
+            <button id="stopButton" onclick="pararContagem()">Stop</button>
+            <button id="cleanTime" onclick="limparTempo()">cleanTime</button>
+        </div>
+    </div>
     <header>
         <input id="inputTarefa" type="text" placeholder="Digite Sua Tarefa">
         <button onclick="addTarefa()" id="btn-add" class="add">Adicionar</button>
