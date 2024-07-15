@@ -46,7 +46,8 @@ header {
 }
 
 .h2Timer {
-    color: rgb(210, 161, 161);
+    color: white;
+    font-weight: bold;
 }
 
 #quantidadeTempo {
